@@ -1,5 +1,5 @@
 ---
-layout: default
+title: About Urbarn
 feature_text: |
   ## Urbarn
   An urban barn
