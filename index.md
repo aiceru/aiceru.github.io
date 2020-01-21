@@ -1,4 +1,5 @@
 ---
+layout: default
 feature_text: |
   ## Urbarn
   An urban barn
