@@ -1,4 +1,5 @@
 ---
+layout: page 
 title: About Urbarn
 feature_text: |
   ## Urbarn
