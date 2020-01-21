@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+// Import frameworks & theme styles
+@import
+  "normalize",
+  "settings",
+  "sassline-base",
+  "syntax",
+  "flex",
+  "theme"
+;
+
+:root {
+  font-size: 85%;
+}

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+https://aiceru.github.io/sitemap.xml
