@@ -4,7 +4,7 @@ title: Golang Development Environment Setup with Vim
 category: Development
 feature_image: https://blog.golang.org/gopher/header.jpg
 ---
-
+<!-- more -->
 ### The Go Project
 
 > Go is an open source project developed by a team at [Google](https://www.google.com) and many [contributors](https://golang.org/CONTRIBUTORS) from the open source community.

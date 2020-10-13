@@ -5,7 +5,6 @@ category: PS4
 feature_image: https://game.capcom.com/manual/MHW/locale/ko/img/page/34_3_1.jpg?t=201909050000
 ---
 <!-- more -->
-
 인도하는 땅 몬스터 소재 원본글(루리웹) [https://bbs.ruliweb.com/family/4442/board/184513/read/197801](https://bbs.ruliweb.com/family/4442/board/184513/read/197801)
 
 인도하는 땅 각 지대 레벨별 출현 몬스터 원본글(루리웹) [https://bbs.ruliweb.com/family/4442/board/184513/read/196833](https://bbs.ruliweb.com/family/4442/board/184513/read/196833)

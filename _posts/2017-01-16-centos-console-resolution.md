@@ -3,9 +3,7 @@ layout: post
 title: CentOS 설치 후 console 의 해상도와 폰트 변경하기
 category: Development
 ---
-
 <!-- more -->
-
 ### 해상도 resolution 변경
 
 `etc/grub.conf` 파일 중, `kernel` 옵션의 가장 마지막에 `vga=0x347` 을 추가.
