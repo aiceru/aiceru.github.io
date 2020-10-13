@@ -4,10 +4,7 @@ title: 몬스터헌터 월드 아이스본 - 인도하는 땅 몬스터 출현�
 category: PS4
 feature_image: https://game.capcom.com/manual/MHW/locale/ko/img/page/34_3_1.jpg?t=201909050000
 ---
-몬스터헌터 월드 아이스본 인도하는 땅의 각 지역 레벨별 출현 몬스터 리스트와 해당 몬스터의 소재 획득 여부를 간편하게 체크할 수 있는 spreadsheet 공유합니다.
-
 <!-- more -->
-
 
 인도하는 땅 몬스터 소재 원본글(루리웹) [https://bbs.ruliweb.com/family/4442/board/184513/read/197801](https://bbs.ruliweb.com/family/4442/board/184513/read/197801)
 

@@ -4,9 +4,7 @@ title: Receiving multicast packets on Linux
 category: Development
 feature_image: https://picsum.photos/1300/400
 ---
-리눅스 환경에서 2개 이상의 network interface 가 있을 때 특정 interface 로 멀티캐스트 패킷을 수신하도록 설정하는 방법입니다.
 <!-- more -->
-
 
 #### 일반 Wifi router 를 이용한 멀티캐스트 패킷 처리의 문제
 Multicast 로 multimedia stream 을 수신하여 패킷을 가공한 뒤 클라이언트로 전송해주는 시스템에서, 멀티캐스트 수신이 제대로 되지 않거나 시간이 지날 수록 패킷 드랍 현상이 심해지는 문제가 발생하는 경우가 있습니다. 관련 자료를 검색해보니, 고가의 산업용 router 와 달리, 일반적인 가정용 공유기의 경우 멀티캐스트 패킷을 처리하는 데 부하가 크게 걸려 공유기의 성능에 지장을 주는 경우가 있는 듯 하여 네트워크 구성을 변경하여 해결하기로 합니다.

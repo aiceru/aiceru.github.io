@@ -4,7 +4,6 @@ title: Service configuration, media transport protocol, and signalling informati
 category: Research
 feature_image: https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/MPEG_Transport_Stream_HL.svg/800px-MPEG_Transport_Stream_HL.svg.png
 ---
-Recommendation ITU-R BT.2074-0 (05/2015) 문서 번역 발췌
 <!-- more -->
 #### 시스템 구조
 
