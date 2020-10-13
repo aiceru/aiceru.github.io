@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Receiving multicast packets on Linux
-category: Development
+tags: [dev, linux, network]
 feature_image: https://picsum.photos/1300/400
 ---
 <!-- more -->

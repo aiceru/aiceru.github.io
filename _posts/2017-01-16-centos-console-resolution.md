@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CentOS 설치 후 console 의 해상도와 폰트 변경하기
-category: Development
+tags: [centos, linux, console]
 ---
 <!-- more -->
 ### 해상도 resolution 변경

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Service configuration, media transport protocol, and signalling information for MMT-based broadcasting systems
-category: Research
+tags: [research, mmt, broadcasting]
 feature_image: https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/MPEG_Transport_Stream_HL.svg/800px-MPEG_Transport_Stream_HL.svg.png
 ---
 <!-- more -->

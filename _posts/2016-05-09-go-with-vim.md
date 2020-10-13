@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Golang Development Environment Setup with Vim
-category: Development
+tags: [dev, go, vim]
 feature_image: https://blog.golang.org/gopher/header.jpg
 ---
 <!-- more -->

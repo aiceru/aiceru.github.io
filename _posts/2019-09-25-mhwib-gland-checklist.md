@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 몬스터헌터 월드 아이스본 - 인도하는 땅 몬스터 출현리스트
-category: PS4
+tags: [game, ps4]
 feature_image: https://game.capcom.com/manual/MHW/locale/ko/img/page/34_3_1.jpg?t=201909050000
 ---
 <!-- more -->
