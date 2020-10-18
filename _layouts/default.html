@@ -34,6 +34,10 @@
 
     {% if site.google_analytics %}{% include site-analytics.html %}{% endif %}
 
+    {% if page.use_math %}
+      {% include mathjax_support.html %}
+    {% endif %}
+
     {% include site-before-start.html %}
   </head>
 
