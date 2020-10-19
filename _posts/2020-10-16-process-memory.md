@@ -24,7 +24,7 @@ OS kernel 또한 그 자체로 하나의 process 이므로, virtual address spac
 - __Text__: program 의 code (instructions) 가 저장되는 공간. Overflow 로 인해 덮어써지는 현상을 방지하기 위하여 `heap` 이나 `stack` 영역 보다 앞쪽 (lower address) 에 자리한다.
 - __Data__: initialized data segment, 명시적으로 초기화된 __global(전역)__ 변수와 __static__ 변수들을 저장하는 공간이다. 기본적으로 data segment 는 read-only 속성을 가지지만, 실제로는 read-only 영역과 read-write 영역으로 구분된다. 예를 들어, 변수의 선언 구문에 따른 저장 영역은 아래와 같다.
  
-```C
+```c
 char s[] = "hello world";
 int debug = 1;
 // global (declared outside the main or any func.)
