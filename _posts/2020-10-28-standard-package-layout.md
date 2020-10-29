@@ -4,7 +4,6 @@ title: Standard Package Layout in Go
 tags: [dev, golang, package, design]
 feature_image: "/assets/img/20201028/gopher_package.png"
 feature_license: "Title picture by Ashley McNamara CC BY-NC-SA 4.0"
-published: false
 ---
 
 <!-- more -->
