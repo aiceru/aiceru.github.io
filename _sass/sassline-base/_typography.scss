@@ -317,7 +317,7 @@ a {
 
   // Code block.
   code, pre {
-    background-color: $codeBackgroundColour;
+    //background-color: $codeBackgroundColour;
     font-family: unquote(map-get($monospacetype, font-family));
   }
 

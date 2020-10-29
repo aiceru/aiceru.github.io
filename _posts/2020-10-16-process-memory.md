@@ -11,7 +11,7 @@ _이 포스트는 [In-Memory Layout of a Program (Process)](https://gabrieletolo
 
 이번 포스트에서는, program 이 실행될 때 실제로 main memory 에 어떤 구조를 가지고 실행되는지 설명한다. 여기에서는 **32-bit x86** 아키텍쳐 머신에서 실행되는 **multitasking Linux OS** 환경을 가정한다.
 
-Multitasking OS 환경에서 실행되는 모든 process 는 각각의 **virtual address space**를 가진다. 이 address space 는 32-bit 환경에서 $$2^{32}$$ = 4GB 의 크기를 가지며, OS kernel 의 page table 에 의해 관리되고 실제 physical address 로 mapping 된다.  
+Multitasking OS 환경에서 실행되는 모든 process 는 각각의 **virtual address space**를 가진다. 이 address space 는 32-bit 환경에서 2<sup>32</sup> = 4GB 의 크기를 가지며, OS kernel 의 page table 에 의해 관리되고 실제 physical address 로 mapping 된다.  
 OS kernel 또한 그 자체로 하나의 process 이므로, virtual address space 를 가지며 OS kernel process 를 위한 전용 address space 를 가진다. Linux OS 에서 총 4GB 의 virtual address space 중 앞 3GB 부분은 user process 를 위해 사용되며, 마지막 1GB (`0xC0000000`~`0xFFFFFFFF`) 부분은 OS kernel 의 전용 address space 로 사용된다. 이를 그림으로 나타내면 아래와 같다.
 
 {% include figure.html image="/assets/img/20201016/memory_layout.jpg" position="center" caption="Virtual memory spaces for kernel and user processes" %}

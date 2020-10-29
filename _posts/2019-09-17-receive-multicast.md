@@ -70,15 +70,15 @@ GATEWAY=192.168.0.1
 
 > /etc/sysconfig/network-scripts/route-enp0s20f0u3
 
-```shell
+```
 224.0.0.0/4 dev enp0s20f0u3
 ```
 224.0.0.0/4 는 [IETF](ietf.org) 에서 정의한 multicast address range 입니다. 모든 멀티캐스트 패킷은 이 인터페이스를 통해 받도록 정의했지만, 필요에 따라 239.255.0.0/16 과 같이 특정 address 대역만 이 인터페이스를 이용하도록 정의할 수도 있습니다.
 
 이상과 같이 설정한 후 재부팅 또는 `systemctl restart network` 으로 네트워크를 재시작하고 나면 `route` 명령어를 통해 static routing 이 제대로 적용되었는지 확인할 수 있습니다. (아래 가장 아랫줄 224.0.0.0~ 라인)
 
-```shell
-[user@localhost]$ route -n
+```zsh
+$ route -n
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 0.0.0.0         192.168.1.1     0.0.0.0         UG    0      0        0 eno1
@@ -97,18 +97,18 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 
 /etc/sysctl.d/ 에 rp_filter.conf 등 적당한 이름으로 파일을 생성하면 시스템 부팅시 자동으로 적용됩니다.
 
-```shell
+```
 net.ipv4.conf.default.rp_filter = 0
 net.ipv4.conf.all.rp_filter = 0
 net.ipv4.conf.enp0s20f0u3.rp_filter = 0
-net.ipv4.icmp_echo_ignore_broadcasts=0
+net.ipv4.icmp_echo_ignore_broadcasts = 0
 ```
 
 #### TroubleShooting
 
 재부팅 혹은 `systemctl restart network` 로 네트워크 재시작 시 route-enp0s20f0u3 파일의 내용이 제대로 반영되지 않는 경우가 있었습니다. 알고 보니 CentOS 7 부터 default network 관리자로 실행되는 NetworkManager service 가 활성화된 경우 이런 문제가 발생한다 합니다. NetworkManager 는 네트워크 인터페이스의 상태를 실시간으로 감지하여 변경 사항을 적용해 주는 서비스로, 보통의 서버 환경에서는 초기 구축을 끝내고 나면 네트워크 구성이 변경될 일은 거의 없으므로 이 서비스를 disable 하여 해결하였습니다.
 
-```Shell
+```shell
 $ systemctl stop NetworkManager
 $ systemctl disable NetworkManager
 ```

@@ -173,6 +173,7 @@
 .highlight {
   color: #ffffff;
   background-color: #272822;
+  line-height: 1.4rem;
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;

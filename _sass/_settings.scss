@@ -1,6 +1,6 @@
 // Background colours
 $backgroundColour: #ffffff !default;
-$codeBackgroundColour: #fafafa !default;
+$codeBackgroundColour: #272822 !default;
 $featureBackgroundColour: #f9fafa !default;
 $accentColour: #05bf85 !default;
 
@@ -30,7 +30,7 @@ $headingtype: (
 ) !default;
 
 $monospacetype: (
-  font-family: "Menlo, monospace",
+  font-family: "Roboto Mono, monospace",
   regular: 400,
   cap-height: 0.68
 ) !default;
@@ -38,3 +38,4 @@ $monospacetype: (
 // Font import, if you're using a non-standard web font
 @import url("https://fonts.googleapis.com/css?family=Merriweather:300,600");
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');

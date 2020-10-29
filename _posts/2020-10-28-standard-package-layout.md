@@ -23,13 +23,13 @@ Vendoring, Generics 등은 Go community 에서 흔히 볼 수 있는 큰 이슈�
 
 모든 code 를 하나의 package 에 작성하는 방식이다. 단순하고, 작은 application 의 경우 잘 동작하며, dependency 자체가 없기 때문에 circular dependency 가 발생할 걱정이 없다.
 
-경험상, 10,000 SLOC*<font size="1rem">source lines of code</font>* 이하의 규모에서는 큰 문제가 발생하지 않았다. 하지만 그 이상의 규모에서는 code 를 탐색하거나, 다른 code 들로부터 분리해 내기가 굉장히 어렵다.
+경험상, 10,000 SLOC*<sub>source lines of code</sub>* 이하의 규모에서는 큰 문제가 발생하지 않았다. 하지만 그 이상의 규모에서는 code 를 탐색하거나, 다른 code 들로부터 분리해 내기가 굉장히 어렵다.
 
 ##### Approach #2: Rails-style layout
 
 또 다른 접근법은, functional type 에 따라 package 를 구분하는 것이다. 예를 들면, handlers, controllers, models 와 같은 식으로 나눈다. 주로 (나를 포함한) [Rails](http://rubyonrails.org/) 개발자들이 이런 식으로 package 를 나누는 편이다.
 
-이 접근법에는 두 가지 issue 가 존재한다. 첫 번째로 naming 이 극악<font size="1rem">atrocious</font>하다. ```controller.UserController``` 처럼, type name 과 package name 에 같은 단어가 중복된다. 나는 naming 에 민감한 편이고, name 은 가장 훌륭한 documentation 방법이라고 생각하기 때문에 (누군가 당신의 code 를 볼 때, 가장 먼저 접하게 되는 부분은 name 이다!) 이러한 중복은 문제라고 생각한다.
+이 접근법에는 두 가지 issue 가 존재한다. 첫 번째로 naming 이 극악<sub>atrocious</sub>하다. ```controller.UserController``` 처럼, type name 과 package name 에 같은 단어가 중복된다. 나는 naming 에 민감한 편이고, name 은 가장 훌륭한 documentation 방법이라고 생각하기 때문에 (누군가 당신의 code 를 볼 때, 가장 먼저 접하게 되는 부분은 name 이다!) 이러한 중복은 문제라고 생각한다.
 
 더 큰 문제는, circular dependency 의 문제이다. 다양한 functional type 들은 서로를 reference 하게 될 확률이 매우 높다. Rails-style 의 접근법은 오로지 one-way dependency 만 존재할 때 잘 작동하는데, 대부분 우리가 구현하고자 하는 application 들은 그리 단순하지가 않다.
 
@@ -57,15 +57,15 @@ Domain 이란, data 와 process 들이 어떻게 상호작용하는지를 서술
 
 <script src="https://gist.github.com/aiceru/a9c4ec2a56302faa7191c05a1761669e.js"></script>
 
-이 규칙은 root package 를 극히 simple 하게 유지할 수 있도록 해 준다. 물론 root package 에 어떠한 action 을 포함하는 data type 들 (역주: Go 에서, method 를 포함하는 struct 를 의미하는 듯.) 역시도 포함될 수 있지만, 그 data type 이 오로지<font size="1rem">if-and-only-if</font> 다른 domain type 에만 의존성을 가질 때에만 root package 에 포함시켜야 한다. 예를 들면, ```UserService``` 를 주기적으로 polling 하는 data type 을 root package 에 정의한다고 했을 때, 그 data type 은 다른 external service 를 호출한다거나, database 에 접근한다거나 하는 외부 의존성을 가져서는 안 된다.
+이 규칙은 root package 를 극히 simple 하게 유지할 수 있도록 해 준다. 물론 root package 에 어떠한 action 을 포함하는 data type 들 (역주: Go 에서, method 를 포함하는 struct 를 의미하는 듯.) 역시도 포함될 수 있지만, 그 data type 이 오로지<sub>if-and-only-if</sub> 다른 domain type 에만 의존성을 가질 때에만 root package 에 포함시켜야 한다. 예를 들면, ```UserService``` 를 주기적으로 polling 하는 data type 을 root package 에 정의한다고 했을 때, 그 data type 은 다른 external service 를 호출한다거나, database 에 접근한다거나 하는 외부 의존성을 가져서는 안 된다.
 
 > *The root package should not depend on any other package in your application!*
 
 ##### 2. Group subpackages by dependency
 
-Root domain 에 외부 의존성<font size="1rem">external dependency</font>을 허용하지 않았기 때문에, 이러한 의존성이 필요한 부분들은 subpackage 에 때려넣어야 한다. 이 approach 에서, subpackage 는 실제 구현과 domain 간의 연결을 위한 adapter 역할을 한다.
+Root domain 에 외부 의존성<sub>external dependency</sub>을 허용하지 않았기 때문에, 이러한 의존성이 필요한 부분들은 subpackage 에 때려넣어야 한다. 이 approach 에서, subpackage 는 실제 구현과 domain 간의 연결을 위한 adapter 역할을 한다.
 
-예를 들면, `UserService` 는 PostgreSQL 을 이용하여 구현<font size="1rem">backed by</font>될 수 있고 우리는 ```postgres.UserService``` 구현체<font size="1rem">implementation</font> 를 제공하는 ```postgres``` package 를 만들어 사용할 수 있다.
+예를 들면, `UserService` 는 PostgreSQL 을 이용하여 구현<sub>backed by</sub>될 수 있고 우리는 ```postgres.UserService``` 구현체<sub>implementation</sub> 를 제공하는 ```postgres``` package 를 만들어 사용할 수 있다.
 
 <script src="https://gist.github.com/aiceru/a50ada9d64fbbb98e58fc81c5105989c.js"></script>
 
@@ -105,7 +105,7 @@ type UserService struct {
 
 ##### 3. Use a shared mock subpackage
 
-Domain interface 를 통해서, 모든 external dependency 들을 고립⛔<font size="1rem">isolated</font>시키는 데에 성공했다. 이제 이 domain interface 와의 connecting point 를 통해 mock implementation 을 주입<font size="1rem">injection</font>할 수 있다!
+Domain interface 를 통해서, 모든 external dependency 들을 고립⛔<sub>isolated</sub>시키는 데에 성공했다. 이제 이 domain interface 와의 connecting point 를 통해 mock implementation 을 주입<sub>injection</sub>할 수 있다!
 
 [GoMock](https://github.com/golang/mock) 과 같은 다양한 mocking library 들이 존재하지만, 개인적으로는 직접 mock 을 작성하는 편을 선호한다. 경험상 대부분의 mocking tool 들은 필요 이상으로 복잡했기 때문이다.
 
@@ -120,3 +120,41 @@ Domain interface 를 통해서, 모든 external dependency 들을 고립⛔<font
 <script src="https://gist.github.com/aiceru/1f4fd5a8be86e4d3cf1e2696f1d0e3e3.js"></script>
 
 `mock.UserService` struct 의 `UserFn` 을 test 내부에서 직접 구현하여 원하는 mock 동작을 하도록 만들었다. 여기서 우리의 관심사는 `http.Handler` 가 HTTP request (method 와 URI path) 를 정확히 구분하여 의도한 대로 `Handler` 내부의 `UserService` 를 통해 `User` 함수를 호출하는지 까지이다. 이후의 `User` 함수 내부의 동작이 제대로 이루어지는지는 여기에서는 관심사가 아니다. `Handler` 가 `User` 함수에 parameter (id - 100) 를 제대로 전달하였는지, 그리고 실제로 `User()` 함수의 호출이 이루어졌는지를 `UserInvoked` 를 이용하여 체크하는 것으로 테스트의 목적을 달성할 수 있다.
+
+##### 4. Main package ties together dependencies
+
+각자 독립적으로 둥실둥실 떠다니는🎈 package 들을 어떻게 하나로 모을 것인가? *main* package 의 역할이 바로 이겁니다 여러분!
+
+###### Main package layout
+
+Application 이라는 하나의 단위는, 일반적으로 여러 개의 binary 파일을 생성한다. 따라서 우리는 Go convention 에 맞추어, *main* package 를 *cmd* package 의 subpackage 로 놓겠다. 예를 들어, *myapp* 이라는 하나의 server binary 와, terminal 을 통해 server 를 관리하기 위한 *myappctl* client binary 가 있다고 가정하면, main package 의 구조는 아래와 같이 구성할 수 있다.
+
+```
+myapp/
+    cmd/
+        myapp/
+            main.go
+        myappctl/
+            main.go
+```
+
+###### Injecting dependencies at compile time
+
+흔히, "dependency injection" 이라 하면 으레 Spring XML files 의 그것을 떠올리지만, 본래의 뜻은 object 가 스스로 dependency 를 구성하지 않도록 설계하고 다른 곳 (main package) 에서 dependency 를 주입<sub>injection</sub>해 주는 것을 뜻한다.
+
+*main* package 가 어떤 object 에 어떤 dependency 를 주입할지 결정한다. *main* package 는 단순히 여러 조각들을 실로 꿰듯 엮어 주는 역할만 수행하기 때문에, 덩치가 크지 않고 명확하게 이해할 수 있는 코드로 구성된다.
+
+<script src="https://gist.github.com/aiceru/e1cbfc2d20bddd1abdfe63c6f8715b83.js"></script>
+
+*main* package 역시도 하나의 adapter👩‍🔧 역할을 하고 있음을 기억하라. terminal 과 우리의 domain 을 이어 주는 역할을 하고 있다!
+
+#### Conclusion
+
+Application design 이란 꽤 어려운 문제다. 엄청나게 많은 선택지가 있고, 일관적인 가이드라인 없이 진행하다가는 현실은 더더욱 시궁창으로 변해갈 것이다. 우리는 위에서 Go application design 에 관한 다양한 approach 를 보았고, 그 단점들 또한 확인할 수 있었다.
+
+나는 dependency 를 기준으로 하는 design approach 가 code 의 구성을 더 단순하고 추론하기 쉽게 만들어 준다고 생각한다. 첫 번째로 우리는 domain language 를 구축했고, 그 다음으로 dependency 들을 모두 독립적으로 분리해 놓았다. 분리된 dependency point 에 mock 구현체를 주입함으로써 test 역시 모두 독립적으로 가능하게 하였으며, 마지막으로 모든 흩어져 있는 dependency 들을 *main* package 를 이용하여 하나의 application 으로 묶어 주었다. 🎁👍
+
+---
+#### 역자 후기
+
+확실히 한 번 읽어보기만 하는 것보단, 번역을 해 가며 예제 코드도 한땀 한땀 쳐보는 것이 두세 배는 이해에 도움이 되는 것 같습니다. 기존에 진행하던 토이프로젝트를 여기에서 이해한 디자인을 이용하여 재구성해보면 재미있을 것 같네요🧐 머리에도 언급하였지만, 다분히 의역 및 선택적 발췌가 섞여 있는 번역본입니다. 꼭 원문을 한 번 읽어 보시기를 권해 드리며, 번역에 치명적인 오류가 보이거나 제가 잘못 이해한 부분이 눈에 밟힌다면 댓글로 남겨주시면 매우 감사하겠습니다!!
