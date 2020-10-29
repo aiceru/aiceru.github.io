@@ -41,10 +41,11 @@ author: aiceru # jekyll-seo-tag > default author
 social: # jekyll-seo-tag > social overrides
   links: # jekyll-seo-tag > social aliases (sameAs)
     - https://github.com/aiceru
-# markdown: CommonMark # Markdown parse settings, CommonMark performs slightly better an others in build time
+markdown: CommonMark # Markdown parse settings, CommonMark performs slightly better an others in build time
 # commonmark:
 # options: ["SMART", "FOOTNOTES"]
 # extensions: ["strikethrough", "autolink", "table"]
+highlighter: rouge
 
 # 4. Jekyll settings
 sass:
