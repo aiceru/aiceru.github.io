@@ -18,6 +18,12 @@
       {% include nav-tags.html %}
     </section>
 
+  {% elsif page.layout == "series" %}
+    <section class="section  section--category-index">
+      <h3>Index</h3>
+      {% include nav-categories.html %}
+    </section>
+
   {% endif %}
 
 </aside>
