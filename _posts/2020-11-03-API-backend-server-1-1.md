@@ -41,8 +41,6 @@ Domain 이라 함은, 기술적인 측면이 아닌 실제 가치적인 측면�
 | `GET`    | `/v1/users/{id}`              | Return user info       |
 | `Delete` | `/v1/users/{id}`              | Delete user            |
 
-<br>
-
 Join, login, logout 등 사용자 관리를 위한 API. Login, logout 등에 HTTP method + URI 의 형태로 어떻게 의미를 부여할 것인지에 대해 고민이 많았다. 검색해보니, 과거에는 '새로운 session을 요청한다', 'session 폐기를 요청한다' 의 의미로  `POST` / `DELETE` method 와 `/user/session/{id}` 형식의 URI를 사용하는 경우도 많았던 모양이다. 나는 인증 방식으로 HTTP header 의 Authorization 필드와 JWT 를 사용하기로 결정하였으므로, auth token 에 대한 생성/삭제/갱신 요청을 사용자 인증에 관련한 URI로 사용하기로 했다.
 
 #### for 'Transaction' domain
@@ -54,8 +52,6 @@ Join, login, logout 등 사용자 관리를 위한 API. Login, logout 등에 HTT
 | `PUT`    | `/v1/transactions/{id}`            | Update transaction                         |
 | `DELETE` | `/v1/transactions/{id}`            | Delete transaction                         |
 
-<br>
-
 Transaction 에 관한 Endpoint 정의는 비교적 수월한 편이었다. Frontend에 직접 전체 transaction의 list를 제공할 경우는 현재 service 구상에서는 없을 것으로 판단하여 transaction 에 대한 `GET` 요청은 user-id를 요청에 포함하여 해당 user의 transaction list만을 filtering하여 제공하는 것으로 설계하였다.
 
 #### for 'Stock' domain
@@ -63,8 +59,6 @@ Transaction 에 관한 Endpoint 정의는 비교적 수월한 편이었다. Fron
 | Method | URI | Description |
 |---|---|---|
 | `GET` | `/v1/stocks/search?q={query}` | Stock name 으로 isin (단축종목코드) 검색 |
-
-<br>
 
 현재로서는 종목에 대한 상세 정보를 제공할 계획은 없기 때문에, Stock 에 대한 API는 종목 이름으로 단축종목코드를 검색하여 결과 list를 전달해주는 용도 한 가지면 충분할 것이다.
 
