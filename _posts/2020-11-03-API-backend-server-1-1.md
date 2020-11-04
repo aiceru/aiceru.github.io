@@ -56,9 +56,9 @@ Transaction 에 관한 Endpoint 정의는 비교적 수월한 편이었다. Fron
 
 #### for 'Stock' domain
 
-| Method | URI | Description |
-|---|---|---|
-| `GET` | `/v1/stocks/search?q={query}` | Stock name 으로 isin (단축종목코드) 검색 |
+| Method | URI                           | Description                              |
+| ------ | ----------------------------- | ---------------------------------------- |
+| `GET`  | `/v1/stocks/search?q={query}` | Stock name 으로 isin (단축종목코드) 검색 |
 
 현재로서는 종목에 대한 상세 정보를 제공할 계획은 없기 때문에, Stock 에 대한 API는 종목 이름으로 단축종목코드를 검색하여 결과 list를 전달해주는 용도 한 가지면 충분할 것이다.
 
