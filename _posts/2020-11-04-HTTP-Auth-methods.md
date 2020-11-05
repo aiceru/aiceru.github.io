@@ -44,7 +44,8 @@ Authorization: Bearer <token>
 
 Basic authentication과 마찬가지로, token을 탈취당할 경우 쉽게 정보가 유출될 수 있으므로 SSL을 이용한 구현이 권장된다. 다만 JWT에서는 이런 경우를 대비하여 access token과 동시에 refresh token을 발행하는 방식으로 보안성의 강화를 꾀하였다.
 
-> JWT에 대해서는 다음 포스팅에서 조금 더 구체적으로 작성할 예정이다.
+> JWT에 대해서는 다음 포스팅에서 조금 더 구체적으로 작성할 예정~~이다.~~이었으나, 한글로❤ 너무 잘 설명되어 있는 포스팅을 찾아서 링크로 대신합니다.  
+> [JSON Web Token 소개와 구조](https://velopert.com/2389) by Velopert
 
 #### Form-based
 
@@ -71,5 +72,6 @@ MD5 hashing 을 이용한 암호화 인증 방식이다.
 3. [Bearer Authentication (from Swagger)](https://swagger.io/docs/specification/authentication/bearer-authentication/)
 4. [\[JWT\]토큰(Token)기반 인증에 대한 소개](https://velopert.com/2350)
 5. [백엔드가 이정도는 해줘야 함 - 5. 사용자 인증 방식 결정](https://velog.io/@city7310/%EB%B0%B1%EC%97%94%EB%93%9C%EA%B0%80-%EC%9D%B4%EC%A0%95%EB%8F%84%EB%8A%94-%ED%95%B4%EC%A4%98%EC%95%BC-%ED%95%A8-5.-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%9D%B8%EC%A6%9D-%EB%B0%A9%EC%8B%9D-%EA%B2%B0%EC%A0%95)
+6. [JSON Web Token 소개와 구조](https://velopert.com/2389)
 
 ---
