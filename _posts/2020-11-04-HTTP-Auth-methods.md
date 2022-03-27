@@ -10,17 +10,7 @@ feature_image: 'https://images.unsplash.com/photo-1580795478690-5c6afcf4e7c3?ixl
 
 그래서 최근에는, token 에 기반한 인증 방식을 사용하는 경우가 대부분이다. 서버는 클라이언트를 식별하기 위한 고유 string (token)을 발급하고, 클라이언트는 매 요청시 header에 token을 포함하는 방식으로 communication 하는 것이다.
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3617657034378751"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block; text-align:center;"
-     data-ad-layout="in-article"
-     data-ad-format="fluid"
-     data-ad-client="ca-pub-3617657034378751"
-     data-ad-slot="2598977095"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{% include inpost-ad.html %}
 
 ### Authentication vs Authorization
 깊이 들어가기 전에, Authentication 과 Authorization 이라는 용어의 차이에 대해 짚고 넘어가자. 많은 경우 두 용어는 구체적인 구분 없이 혼용되곤 한다. 두 가지를 구분하는 핵심 질문은
@@ -72,6 +62,8 @@ MD5 hashing 을 이용한 암호화 인증 방식이다.
 2. Server는 nonce (number), realm (a hash string)을 client에 전달하고 인증을 요청
 3. Client는 2에서 받은 realm을 hash key로 username, password를 MD5 hashing하여 nonce와 함께 server로 전송
 4. Server는 hashing된 username, password를 비교하여 client를 인증 처리
+
+{% include inpost-ad.html %}
 
 ### Conclusion
 
