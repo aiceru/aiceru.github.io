@@ -2,7 +2,9 @@
 layout: post
 title: 
 tags: []
-feature_image:
+feature_image: ''
+feature_license:
+published:
 ---
 
 <!-- more -->

@@ -332,9 +332,9 @@ a {
   }
 
   code {
-    @include fontsize(theta, all);
+    @include fontsize(eta, all);
 
-    line-height: 1rem;
+    line-height: 1.2rem;
   }
 
   // Letter space those capitals people, Jan Tschichold would be proud.
