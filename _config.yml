@@ -78,7 +78,7 @@ encoding: utf-8 # Make sure the encoding is right
 lang: ko-KR # Set the site language
 title: 'MoonLights' # Site name or title, also used in jekyll-seo-tag
 logo: 'https://www.gravatar.com/avatar/d78158bd0af0557edb8328a414cfe3b5?s=40' # Site logo, also used in jekyll-seo-tag
-description: 'Working developer's life with cycling, woodworking, gaming' # Site description and default description, also used in jekyll-seo-tag
+description: "Working developer's life with cycling, woodworking, gaming" # Site description and default description, also used in jekyll-seo-tag
 url: 'https://aiceru.github.io' # Site url, also used in jekyll-seo-tag
 baseurl: ''
 repo: 'https://github.com/aiceru/aiceru.github.io'
