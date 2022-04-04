@@ -29,7 +29,6 @@ plugins:
   - jekyll-seo-tag
   - jekyll-redirect-from
   - jekyll-default-layout
-  - jekyll-feed
   - jekyll-include-cache
   - jemoji
 
