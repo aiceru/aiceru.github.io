@@ -30,6 +30,7 @@ plugins:
   - jekyll-redirect-from
   - jekyll-default-layout
   - jekyll-include-cache
+  - jekyll-feed
   - jemoji
 
 # 3. Gem settings
