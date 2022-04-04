@@ -1,13 +1,14 @@
 ---
 layout: post
-title: Red-Black Tree
-tags: [interview, data structure, cs]
+title: '[CS fundamentals] Red-Black Tree'
+categories: [CS]
+tags: [interview, data structure, cs, red-black, tree]
 feature_image: https://cdn.pixabay.com/photo/2020/09/06/16/24/elderberry-5549389_1280.jpg
 published: true
 ---
 
 <!-- more -->
-### Red-black tree
+# Red-black tree
 
 red-black tree 란 [Binary search tree (BST)](https://en.wikipedia.org/wiki/Binary_search_tree) 의 일종으로, BST 의 단점 - tree 전체가 balanced 하지 않을 경우 (최악) ```O(n)``` 의 시간복잡도를 보임 - 을 개선한 tree structure 입니다.
 
@@ -20,7 +21,7 @@ red-black tree 란 [Binary search tree (BST)](https://en.wikipedia.org/wiki/Bina
 
 ![Example of single sentinel NIL leaf](http://images.zhuxinquan.com/entry/redblacktree_sample.JPG)
 
-#### 핵심적인 특징
+## 핵심적인 특징
 - BST 의 성질은 그대로 유지 (모든 노드에 대해, 해당 노드의 값은 left child 노드의 값보다 크고, right child 노드의 값보다 작다.)
 - 모든 노드는 ```RED``` 혹은 ```BLACK``` 의 color 를 갖는다.
 - 모든 최외곽 노드 (```root``` 혹은 ```leaf```) 의 color 는 항상 ```BLACK``` 이다. (external rule)

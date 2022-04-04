@@ -1,7 +1,8 @@
 ---
 layout: post
-title: Standard Package Layout in Go
-tags: [dev, golang, package, design]
+title: '[Golang] Standard Package Layout'
+categories: [Development]
+tags: [golang, package, design, layout]
 feature_image: "/assets/img/20201028/gopher_package.png"
 feature_license: "Title picture by Ashley McNamara CC BY-NC-SA 4.0"
 ---
@@ -11,21 +12,21 @@ feature_license: "Title picture by Ashley McNamara CC BY-NC-SA 4.0"
 
 조금 내용 자체가 추상적인 내용이라 어렵긴 하지만, [WTF Dial](https://medium.com/wtf-dial) series 에 Go 와 DDD 를 기반으로 한 설계/구현 내용이 비교적 이해하기 쉽게 나와있어서 참고하던 중, 해당 포스트 저자인 [Ben Johnson](https://medium.com/@benbjohnson?source=post_page-----9655cd523182--------------------------------) 이 제안한 ['standard package layout'](https://medium.com/@benbjohnson/standard-package-layout-7cdbc8391fc1) 포스트의 내용이 좋아 보여 번역을 해 보았습니다. 의역이 많이 섞여 있으니, 가급적 이 포스트를 보신 다음 원문도 함께 읽어 보시길 권합니다.
 
-### Standard Package Layout
+# Standard Package Layout
 
 Vendoring, Generics 등은 Go community 에서 흔히 볼 수 있는 큰 이슈들이다. 하지만 거의 언급되지 않는 또 다른 (중요한) 이슈가 하나 있다. 바로 Application package layout 에 관련한 내용이다.
 
 *어떤 구조로 코드를 만들 것인가?* 라는 질문에 대한 답은 모든 프로젝트 혹은 application 에서 제각각 다르다. 하나의 package 에 모든 코드를 작성하기도 하고, type 혹은 module 을 기준으로 package 를 나누기도 한다. 적어도 하나의 **team**으로 일할 때에는 package 구조에 대한 구체적인 (좋은) 전략이 필요하다. 그렇지 않으면 code 는 정돈되지 않고 제각각의 package 에 흩어진 채로 존재하게 될 것이며 이는 결국 유지보수의 비용 증가 등으로 이어지게 된다. → Go application design 의 **표준**을 만들고 싶다!!
 
-#### Common flawed approaches
+## Common flawed approaches
 
-##### Approach #1: Monolithic package
+### Approach #1: Monolithic package
 
 모든 code 를 하나의 package 에 작성하는 방식이다. 단순하고, 작은 application 의 경우 잘 동작하며, dependency 자체가 없기 때문에 circular dependency 가 발생할 걱정이 없다.
 
 경험상, 10,000 SLOC*<sub>source lines of code</sub>* 이하의 규모에서는 큰 문제가 발생하지 않았다. 하지만 그 이상의 규모에서는 code 를 탐색하거나, 다른 code 들로부터 분리해 내기가 굉장히 어렵다.
 
-##### Approach #2: Rails-style layout
+### Approach #2: Rails-style layout
 
 또 다른 접근법은, functional type 에 따라 package 를 구분하는 것이다. 예를 들면, handlers, controllers, models 와 같은 식으로 나눈다. 주로 (나를 포함한) [Rails](http://rubyonrails.org/) 개발자들이 이런 식으로 package 를 나누는 편이다.
 
@@ -33,13 +34,13 @@ Vendoring, Generics 등은 Go community 에서 흔히 볼 수 있는 큰 이슈�
 
 더 큰 문제는, circular dependency 의 문제이다. 다양한 functional type 들은 서로를 reference 하게 될 확률이 매우 높다. Rails-style 의 접근법은 오로지 one-way dependency 만 존재할 때 잘 작동하는데, 대부분 우리가 구현하고자 하는 application 들은 그리 단순하지가 않다.
 
-##### Approach #3: Group by module
+### Approach #3: Group by module
 
 이 접근법은 function 이 아니라 module 을 기준으로 구분한다는 것 외에는 위 2번째의 접근법과 비슷하다. 예를 들면, ```user``` package 와 ```accounts``` package 로 나뉘는 경우 등을 볼 수 있다.
 
 이 역시 마찬가지로 naming issue 가 존재한다. (이를 테면, ```users.User``` 라던가...) 거기다 두 번째 issue 인 circular dependency 의 issue 역시 해결되지 않는다. - ```accounts.Controller``` 와 ```users.Controller``` 가 서로 참조하며 interact 하는 상황을 생각해 보라!
 
-#### A Better Approach
+## A Better Approach
 
 내가 프로젝트를 진행할 때 사용하는 규칙은 아래 4가지이다.
 1. Root package is for domain types
@@ -49,7 +50,7 @@ Vendoring, Generics 등은 Go community 에서 흔히 볼 수 있는 큰 이슈�
 
 이 규칙들은 각각의 package 들을 완전히 독립적으로 설계하고, application 전체에 걸쳐 명확한 domain language 를 정의하는 데 유용하다. 이 규칙들이 어떻게 적용되는지 실제 예를 들어 보도록 하자.
 
-##### 1. Root package is for domain types
+### 1. Root package is for domain types
 
 Domain 이란, data 와 process 들이 어떻게 상호작용하는지를 서술하는 논리적인 하나의 high-level language 이다. E-commerce application 에서는 customers, accounts, charging credit cards, handling inventory 등이 있을 수 있고, Facebook 이라면 users, likes, relationships 등이 있을 수 있다. 이러한 domain 의 정의는 실제 application 을 구현하기 위한 특정 technology 들과는 전혀 상관없이 정의된다.
 
@@ -61,7 +62,7 @@ Domain 이란, data 와 process 들이 어떻게 상호작용하는지를 서술
 
 > *The root package should not depend on any other package in your application!*
 
-##### 2. Group subpackages by dependency
+### 2. Group subpackages by dependency
 
 Root domain 에 외부 의존성<sub>external dependency</sub>을 허용하지 않았기 때문에, 이러한 의존성이 필요한 부분들은 subpackage 에 때려넣어야 한다. 이 approach 에서, subpackage 는 실제 구현과 domain 간의 연결을 위한 adapter 역할을 한다.
 
@@ -79,7 +80,7 @@ PostgreSQL 에 대한 dependency 를 완전히 분리시킴으로써 testing 을
 
 이와 같은 approach 는 Go 의 standard library 에서도 찾아볼 수 있다. [io.Reader](https://golang.org/pkg/io/#Reader) 는 byte 들을 읽어들이기 위한 domain type 으로, 구체적인 구현체들은 `tar.Reader`, `gzip.Reader`, `multipart.Reader` 등과 같이 실제 구현체의 dependency 를 기준으로 분류되어 있다. 위에서 예를 든 `UserCache` 와 마찬가지로, `os.File` → `bufio.Reader` → `gzip.Reader` → `tar.Reader` 순으로 wrapping 되어 파일의 압축과 묶음 작업을 layer 구조로 수행할 수 있다.
 
-###### Dependencies between dependencies
+#### Dependencies between dependencies
 
 실제 상황에서, dependency 는 항상 복잡한 양상으로 나타난다. `User` data 를 PostgreSQL 에 저장하기로 결정했지만, `User` 의 financial transaction 은 [Stripe](https://stripe.com/) 같은 third party library 에 저장되어 있을 수도 있다. 이런 경우, 우리는 Stripe 에 대한 dependency 를 wrapping 하는 logical domain type 을 추가할 수 있다. 새로 추가한 domain type 을 `TransactionService` 라 하자. (역자 주: `myapp.UserService` 처럼 myapp package 에 interface 로 정의하며, stripe package 에 이 interface 를 구현한 `stripe.TransactionService` struct 를 정의한다.)
 
@@ -93,7 +94,7 @@ type UserService struct {
 
 이제 PostgreSQL, Stripe 에 대한 2개의 dependency 는 서로에 대한 dependency 는 전혀 없으며, 각각 우리가 만든 공통된 domain language 와만 직접적인 의존성을 가지고 동작하게 된다. 따라서 우리는 아무 때나 Stripe 에 대한 의존성에 영향을 끼치지 않으면서 PostgreSQL 을 MySQL 로 대체할 수도 있고, 또는 PostgreSQL 에는 영향 없이 Stripe 를 다른 payment processor 로 교체할 수 있게 되었다.
 
-###### Don't limit this to third party dependencies
+#### Don't limit this to third party dependencies
 
 이상하게 들릴 수도 있지만, third party library 에 대해서 뿐만이 아니라 standard library 들에 대해서도 위와 같은 규칙을 적용하여 독립성을 보장해야 한다. 이를 테면, `net/http` package 에 대한 dependency 역시 마찬가지로 `http` subpackage 를 정의하여 이 안에 넣어버린다.
 
@@ -103,7 +104,7 @@ type UserService struct {
 
 위 code 에서 `http.Handler` 는 우리의 domain 과 HTTP protocol (`net/http` 가 제공하는) 사이에서 adapter 의 역할을 하게 된다.
 
-##### 3. Use a shared mock subpackage
+### 3. Use a shared mock subpackage
 
 Domain interface 를 통해서, 모든 external dependency 들을 고립⛔<sub>isolated</sub>시키는 데에 성공했다. 이제 이 domain interface 와의 connecting point 를 통해 mock implementation 을 주입<sub>injection</sub>할 수 있다!
 
@@ -121,11 +122,11 @@ Domain interface 를 통해서, 모든 external dependency 들을 고립⛔<sub>
 
 `mock.UserService` struct 의 `UserFn` 을 test 내부에서 직접 구현하여 원하는 mock 동작을 하도록 만들었다. 여기서 우리의 관심사는 `http.Handler` 가 HTTP request (method 와 URI path) 를 정확히 구분하여 의도한 대로 `Handler` 내부의 `UserService` 를 통해 `User` 함수를 호출하는지 까지이다. 이후의 `User` 함수 내부의 동작이 제대로 이루어지는지는 여기에서는 관심사가 아니다. `Handler` 가 `User` 함수에 parameter (id - 100) 를 제대로 전달하였는지, 그리고 실제로 `User()` 함수의 호출이 이루어졌는지를 `UserInvoked` 를 이용하여 체크하는 것으로 테스트의 목적을 달성할 수 있다.
 
-##### 4. Main package ties together dependencies
+### 4. Main package ties together dependencies
 
 각자 독립적으로 둥실둥실 떠다니는🎈 package 들을 어떻게 하나로 모을 것인가? *main* package 의 역할이 바로 이겁니다 여러분!
 
-###### Main package layout
+#### Main package layout
 
 Application 이라는 하나의 단위는, 일반적으로 여러 개의 binary 파일을 생성한다. 따라서 우리는 Go convention 에 맞추어, *main* package 를 *cmd* package 의 subpackage 로 놓겠다. 예를 들어, *myapp* 이라는 하나의 server binary 와, terminal 을 통해 server 를 관리하기 위한 *myappctl* client binary 가 있다고 가정하면, main package 의 구조는 아래와 같이 구성할 수 있다.
 
@@ -138,7 +139,7 @@ myapp/
             main.go
 ```
 
-###### Injecting dependencies at compile time
+#### Injecting dependencies at compile time
 
 흔히, "dependency injection" 이라 하면 으레 Spring XML files 의 그것을 떠올리지만, 본래의 뜻은 object 가 스스로 dependency 를 구성하지 않도록 설계하고 다른 곳 (main package) 에서 dependency 를 주입<sub>injection</sub>해 주는 것을 뜻한다.
 
@@ -148,13 +149,13 @@ myapp/
 
 *main* package 역시도 하나의 adapter👩‍🔧 역할을 하고 있음을 기억하라. terminal 과 우리의 domain 을 이어 주는 역할을 하고 있다!
 
-#### Conclusion
+## Conclusion
 
 Application design 이란 꽤 어려운 문제다. 엄청나게 많은 선택지가 있고, 일관적인 가이드라인 없이 진행하다가는 현실은 더더욱 시궁창으로 변해갈 것이다. 우리는 위에서 Go application design 에 관한 다양한 approach 를 보았고, 그 단점들 또한 확인할 수 있었다.
 
 나는 dependency 를 기준으로 하는 design approach 가 code 의 구성을 더 단순하고 추론하기 쉽게 만들어 준다고 생각한다. 첫 번째로 우리는 domain language 를 구축했고, 그 다음으로 dependency 들을 모두 독립적으로 분리해 놓았다. 분리된 dependency point 에 mock 구현체를 주입함으로써 test 역시 모두 독립적으로 가능하게 하였으며, 마지막으로 모든 흩어져 있는 dependency 들을 *main* package 를 이용하여 하나의 application 으로 묶어 주었다. 🎁👍
 
 ---
-#### 역자 후기
+## 역자 후기
 
 확실히 한 번 읽어보기만 하는 것보단, 번역을 해 가며 예제 코드도 한땀 한땀 쳐보는 것이 두세 배는 이해에 도움이 되는 것 같습니다. 기존에 진행하던 토이프로젝트를 여기에서 이해한 디자인을 이용하여 재구성해보면 재미있을 것 같네요🧐 머리에도 언급하였지만, 다분히 의역 및 선택적 발췌가 섞여 있는 번역본입니다. 꼭 원문을 한 번 읽어 보시기를 권해 드리며, 번역에 치명적인 오류가 보이거나 제가 잘못 이해한 부분이 눈에 밟힌다면 댓글로 남겨주시면 매우 감사하겠습니다!!

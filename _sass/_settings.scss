@@ -1,16 +1,16 @@
 // Background colours
-$backgroundColour: #ffffff !default;
+$backgroundColour: #000000 !default;
 $codeBackgroundColour: #272822 !default;
-$featureBackgroundColour: #f9fafa !default;
-$accentColour: #05bf85 !default;
+$featureBackgroundColour: #060505 !default;
+$accentColour: #86d9ff !default;
 
 // Text colours
-$headingColour: #242e2b !default;
-$bodyColour: #384743 !default;
-$linkColour: #05bf85 !default;
-$hoverColour: #008000 !default;
-$focusColour: #fa407a !default;
-$captionColour: #a8adac !default;
+$headingColour: #dee1e2 !default;
+$bodyColour: #d5e0e6 !default;
+$linkColour: #86d9ff !default;
+$hoverColour: rgb(70, 176, 224) !default;
+$focusColour: #3e5ce6 !default;
+$captionColour: #9a9e9e !default;
 $white: #ffffff !default;
 
 // Typography
@@ -36,8 +36,8 @@ $monospacetype: (
 ) !default;
 
 // Font import, if you're using a non-standard web font
-@import url("https://fonts.googleapis.com/css?family=Merriweather:300,600");
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:300,600");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono');
 

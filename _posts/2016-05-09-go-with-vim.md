@@ -1,11 +1,12 @@
 ---
 layout: post
-title: Golang Development Environment Setup with Vim
-tags: [dev, go, vim]
+title: '[Golang] Development Environment Setup with Vim'
+categories: [Development]
+tags: [go, vim, environment, setup]
 feature_image: https://blog.golang.org/gopher/header.jpg
 ---
 <!-- more -->
-### The Go Project
+# The Go Project
 
 > Go is an open source project developed by a team at [Google](https://www.google.com) and many [contributors](https://golang.org/CONTRIBUTORS) from the open source community.
 
@@ -17,7 +18,7 @@ Go 언어는 Google 이 주도하고, 여러 오픈 소스 커뮤니티 컨트�
 
 (참고 : [The Go Programming Language](https://golang.org/) : 뭐든, 공홈만큼 좋은 step by step guide 는 없다)
 
-### Installing Go
+# Installing Go
 
 [Getting Started](https://golang.org/doc/install) page 에 가서 Go binary 를 다운로드한다.
 
@@ -35,7 +36,7 @@ Go 언어는 Google 이 주도하고, 여러 오픈 소스 커뮤니티 컨트�
   $ export GOROOT=$HOME/go
   ```
   
-#### Test Installation
+## Test Installation
 
 우선, workspace 를 하나 생성하고, (ex. `$HOME/work`) go environment variable ```GOPATH``` 에 workspace 위치를 지정해준다. Go 의 workspace 에 관한 자세한 설명은 [여기](https://golang.org/doc/code.html#Workspaces)로.
 ```bash
@@ -62,7 +63,7 @@ hello, world
 ```
 무사히 Go 를 설치하고 테스트까지 마쳤다면, 본격적으로 Go 언어 개발을 위한 vim 환경 세팅에 들어가보자.
 
-### vim-go plugin
+# vim-go plugin
 
 Vundle, Pathogen, vim-plug, NeoBundle 등 다양한 플러그인 매니저를 이용하여 vim-go 를 설치할 수 있다. 자세한 내용은 [vim-go @ github](https://github.com/faith/vim-go) 페이지를 참고하자.
 
@@ -70,7 +71,7 @@ Go language 의 syntax highlighting 및 파일 저장(save)시 자동으로 `gof
 
 위에서 언급한 기능들만 사용해도, 언어를 학습하는 입장에서는 차고 넘칠 정도. 아직 디버깅이나 gotags 를 이용한 복잡한 코드 분석 정도까지는 할 일이 없으니... 나중에 필요한 일이 생기면 차차 배우도록 하...겠지...? -_-)
 
-#### 기본 setting
+## 기본 setting
 
 기본적으로, Functions, Methods, Structs, Interfaces, Operators 등에 대해 syntax highlighting 기능을 on.
 ```vim

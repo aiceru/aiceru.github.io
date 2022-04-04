@@ -1,9 +1,11 @@
 ---
 layout: post
-title: 
+title: '[]'
+categories: []
 tags: []
 feature_image: ''
-feature_license:
+feature_license: ''
+use_math: false
 published:
 ---
 

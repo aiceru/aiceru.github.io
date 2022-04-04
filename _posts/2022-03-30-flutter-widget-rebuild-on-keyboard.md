@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Flutter 에서 keyboard가 나타날 때 widget rebuild 일어나는 문제 해결
+title: '[Flutter] keyboard가 나타날 때 widget rebuild 일어나는 문제 해결'
+categories: [Development]
 tags: [app, flutter, widget, rebuild, keyboard, textfield, textformfield]
 feature_image: 'https://images.unsplash.com/photo-1604246914453-b0d2afe6dcc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80'
 feature_license: Cover picture by <a href="https://unsplash.com/@chrisbriscoe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Christopher Briscoe</a> on <a href="https://unsplash.com/s/photos/rebuild?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
-published: true
 ---
 
 <!-- more -->
@@ -45,11 +45,17 @@ class ErrorDialog {
 
 문제를 해결하기 위해서는 keyboard 가 나타날 때 일어나는 widget tree rebuild 를 막아주면 된다. [`Scaffold`](https://api.flutter.dev/flutter/material/Scaffold-class.html) Object 의 `resizeToAvoidBottomInset` property 에 `false` 값을 주면, 기존 위젯 트리가 keyboard 영역에 밀려 올라가는 것이 아니라 keyboard 아래에 그대로 유지되므로 widget tree 의 영역을 재계산하지 않고 rebuild 도 일어나지 않게 된다. 아래는 flutter api document 의 해당 property 에 대한 설명이다.
 
-> **resizeToAvoidBottomInset property Null safety**  
+> **resizeToAvoidBottomInset property Null safety**
+> &nbsp;  
+> &nbsp;  
 > bool? resizeToAvoidBottomInset  
+> &nbsp;  
 > final  
+> &nbsp;  
 > If true the body and the scaffold's floating widgets should size themselves to avoid the onscreen keyboard whose height is defined by the ambient MediaQuery's MediaQueryData.viewInsets bottom property.  
+> &nbsp;  
 > For example, if there is an onscreen keyboard displayed above the scaffold, the body can be resized to avoid overlapping the keyboard, which prevents widgets inside the body from being obscured by the keyboard.  
+> &nbsp;  
 > Defaults to true.
 
 # 아니 근데 외않되

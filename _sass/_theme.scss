@@ -24,6 +24,9 @@ body {
   .logo {
     @include flex(0 0 auto);
   }
+  .title {
+    @include flex(0 0 auto);
+  }
   .container {
     @include flexbox;
     @include flex-direction(row);
@@ -44,8 +47,6 @@ body {
 }
 
 .feature {
-  padding-bottom: .4rem;
-  margin-bottom: 1.6rem;
   text-align: center;
   background: $featureBackgroundColour;
   background-size: cover;
@@ -56,6 +57,16 @@ body {
     @include flex-direction(column);
     @include justify-content(center);
   }
+}
+
+.feature-license {
+  padding-bottom: .4rem;
+  margin-bottom: 1.6rem;
+  text-align: center;
+  font-size: small;
+  color: $captionColour;
+  @include flex-direction(column);
+  @include justify-content(center);
 }
 
 .logo {
@@ -86,12 +97,12 @@ body {
 }
 
 .footer {
-  background: $headingColour;
+  background: $backgroundColour;
   color: $captionColour;
   a {
     color: $captionColour;
     &:hover {
-      color: $backgroundColour;
+      color: $hoverColour;
     }
   }
   .container {
@@ -147,7 +158,7 @@ body {
 
 .aside {
   @include breakpoint(break-1) {
-    max-width: 34%;
+    max-width: 16%;
     margin-left: 4%;
     @include flex(1, 0, auto);
     opacity: 0.5;
@@ -231,6 +242,17 @@ img {
   display: block;
 }
 
+.figurebox {
+  @include flexbox;
+  @include flex-direction(row);
+  @include justify-content(space-between);
+  margin-top: 2rem;
+  padding: 1rem 0;
+  @include breakpoint(break-1) {
+    @include align-items(center);
+  }
+}
+
 .figure {
   line-height: 0;
   &--left {
@@ -246,12 +268,6 @@ img {
   &--center {
     text-align: center;
     clear: both;
-  }
-  &--left-with-padding {
-    float: left;
-    text-align: center;
-    padding-right: 5rem;
-    margin-top: 2rem;
   }
 }
 
@@ -315,6 +331,7 @@ select {
   border: none;
   box-shadow: none;
   border-radius: 0;
+  color-scheme: dark;
   -webkit-appearance: none;
   .icon {
     margin: 0 0 .35rem;

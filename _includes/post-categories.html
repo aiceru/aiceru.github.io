@@ -7,14 +7,13 @@
         {% assign has_categories = true %}
         <li class="item  item--post">
           <article class="article  article--post  typeset">
-            <h4><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h4>
-            {% include post-meta.html %}
-            {{ page.excerpt | truncatewords: 60 | markdownify }}
+            <h3><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a> {% include post-date.html %}</h3>
           </article>
         </li>
       {% endfor %}
     </ul>
-    {% unless forloop.last %}<hr/>{% endunless %}
+    {% unless forloop.last %}
+    <hr />{% endunless %}
   </section>
 {% endfor %}
 

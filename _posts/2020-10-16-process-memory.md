@@ -1,7 +1,8 @@
 ---
 layout: post
-title: Process memory 구조
-tags: [dev, cs, process, memory, linux]
+title: '[CS fundamentals] Process memory 구조'
+categories: [CS]
+tags: [cs, process, memory, linux]
 use_math: true
 feature_image: https://academy.avast.com/hubfs/New_Avast_Academy/What%20is%20RAM%20memory/What_is_RAM-Hero.jpg
 ---

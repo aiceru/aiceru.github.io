@@ -5,12 +5,10 @@
         <li class="item  item--post">
           <article class="article  article--post">
 
-            <h3><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h3>
-            {% include post-meta.html %}
-            {{ page.excerpt | markdownify | truncatewords: 60 }}
-
-            <br><hr>
-
+            <h3><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a> {% include post-date.html %}</h3>
+            <!-- {% include post-meta.html %} -->
+            <!-- {{ page.excerpt | markdownify | truncatewords: 60 }} -->
+            <!-- <br><hr> -->
           </article>
         </li>
       {% endfor %}
@@ -23,13 +21,7 @@
       {% for page in site.posts %}
         <li class="item  item--post">
           <article class="article  article--post">
-
-            <h2><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h2>
-            {% include post-meta.html %}
-            {{ page.excerpt | markdownify | truncatewords: 60 }}
-
-            <br><hr>
-
+            <h3><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a></h3>
           </article>
         </li>
       {% endfor %}
