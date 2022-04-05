@@ -74,7 +74,7 @@ defaults:
       image: '/assets/logos/moon.png' # Default image for sharing
 
 # 7. Site settings
-encoding: utf-8 # Make sure the encoding is right
+encoding: UTF-8 # Make sure the encoding is right
 lang: ko-KR # Set the site language
 title: 'MoonLights' # Site name or title, also used in jekyll-seo-tag
 logo: 'https://www.gravatar.com/avatar/d78158bd0af0557edb8328a414cfe3b5?s=40' # Site logo, also used in jekyll-seo-tag
