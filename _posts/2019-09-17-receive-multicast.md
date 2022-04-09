@@ -4,12 +4,17 @@ title: '[Linux] Receiving multicast packets'
 categories: [Development]
 tags: [linux, network, multicast]
 feature_image: https://picsum.photos/1300/400
+last_modified_at: '2022-04-09 23:50:01'
 ---
+
 <!-- more -->
+
 # Wifi router 멀티캐스트 패킷 처리의 문제
+
 Multicast 로 multimedia stream 을 수신하여 패킷을 가공한 뒤 클라이언트로 전송해주는 시스템에서, 멀티캐스트 수신이 제대로 되지 않거나 시간이 지날 수록 패킷 드랍 현상이 심해지는 문제가 발생하는 경우가 있습니다. 관련 자료를 검색해보니, 고가의 산업용 router 와 달리, 일반적인 가정용 공유기의 경우 멀티캐스트 패킷을 처리하는 데 부하가 크게 걸려 공유기의 성능에 지장을 주는 경우가 있는 듯 하여 네트워크 구성을 변경하여 해결하기로 합니다.
 
 # Test Environment
+
 - Linux distro - CentOS 7
 - 서버에 Network interface 를 추가하여
   - NIC 2 (_enp0s20f0u3_) 은 multicast source 와 1:1 connection 으로
@@ -19,12 +24,12 @@ Multicast 로 multimedia stream 을 수신하여 패킷을 가공한 뒤 클라�
 
 ## NIC static configuration
 
-
 아래 내용을 참고하여, NIC 2(멀티캐스트 수신용, _enp0s20f0u3_) 를 static address 로 설정해 줍니다. ifcfg-enp0s20f0u3 파일을 직접 수정하거나, 혹은 nmtui 등의 terminal UI 도구를 이용하셔도 됩니다. 여기에서는 192.168.0.10/24 를 사용했지만, 어차피 이 인터페이스는 multicast source 와 1:1 로 직접 연결되며, multicast packet 을 수신하는 용도이기 때문에 10.10.10.10/24 등 아무 주소나 넣어도 상관없습니다. multicast source 와 같은 subnet 으로 맞춰 줄 필요도 없습니다.
 
 참고: CentOS 7 에서 NetworkManager 가 활성화되어 있는 경우에는 ifcfg 파일의 이름이 조금 다를 수 있습니다. ex. ifcfg-Wired_connection_1 등
 
 > /etc/sysconfig/network-scripts/ifcfg-eno1 : DHCP 사용
+
 ```shell
 TYPE=Ethernet
 PROXY_METHOD=none
@@ -42,7 +47,9 @@ UUID=74222d7e-b5bb-4fe6-a602-27733e3f72b1
 DEVICE=eno1
 ONBOOT=yes
 ```
-> /etc/sysconfig/network-scripts/ifcfg-Wired_connection_1 : 멀티캐스트 수신용, static address  사용
+
+> /etc/sysconfig/network-scripts/ifcfg-Wired_connection_1 : 멀티캐스트 수신용, static address 사용
+
 ```shell
 HWADDR=58:EF:68:7F:42:8A
 TYPE=Ethernet
@@ -74,6 +81,7 @@ GATEWAY=192.168.0.1
 ```
 224.0.0.0/4 dev enp0s20f0u3
 ```
+
 224.0.0.0/4 는 [IETF](ietf.org) 에서 정의한 multicast address range 입니다. 모든 멀티캐스트 패킷은 이 인터페이스를 통해 받도록 정의했지만, 필요에 따라 239.255.0.0/16 과 같이 특정 address 대역만 이 인터페이스를 이용하도록 정의할 수도 있습니다.
 
 이상과 같이 설정한 후 재부팅 또는 `systemctl restart network` 으로 네트워크를 재시작하고 나면 `route` 명령어를 통해 static routing 이 제대로 적용되었는지 확인할 수 있습니다. (아래 가장 아랫줄 224.0.0.0~ 라인)

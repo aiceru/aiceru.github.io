@@ -4,15 +4,17 @@ title: '[HTTP] Authentication methods'
 categories: [Development]
 tags: [backend, api server, http, auth, authorization, authentication]
 feature_image: 'https://images.unsplash.com/photo-1580795478690-5c6afcf4e7c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80'
-related_posts: '_posts/2020-11-03-API-backend-server-1-1'
+last_modified_at: '2022-04-09 23:50:01'
 ---
 
 <!-- more -->
+
 오늘날, 많은 API (REST or not)들이, 사용자의 신원(account)을 확인하거나 제한된 리소스에 대한 접근 허용 여부를 판단하기 위해 HTTP에 기반한 인증 방식을 사용하고 있다. 과거에는 주로 browser cookie 에 기반한 session 관리 방식을 많이 사용했었다. 하지만 이 방식은 사용자 접속시 생성한 session 을 서버의 memory 에 유지하고 있어야 하는 부담이 발생하고, 서버를 여러 대로 확장할 경우 서버 간의 session 정보 공유가 어려워 시스템의 scalability 가 떨어진다. Redis 등의 look-aside session storage 를 따로 두어 확장성을 해결할 수도 있지만, 사용자 session 이 많아짐에 따라 시스템 전체에 session 을 유지하기 위한 부하가 증가한다는 문제는 그대로 남는다. 또한 cookie 는 단일 domain 및 그 하위 domain에서만 작동하도록 설계되어 CORS (Cross Origin Resource Sharing) 의 측면에서도, 쿠키를 기반으로 한 서비스는 구현하기가 까다로우며, 특히 최근 mobile traffic이 급증하면서 Android/iOS 모바일 어플리케이션에서는 별도의 cookie container를 사용해야 하는 등 불편함이 제기되고 있다.
 
 그래서 최근에는, token 에 기반한 인증 방식을 사용하는 경우가 대부분이다. 서버는 클라이언트를 식별하기 위한 고유 string (token)을 발급하고, 클라이언트는 매 요청시 header에 token을 포함하는 방식으로 communication 하는 것이다.
 
 # Authentication vs Authorization
+
 깊이 들어가기 전에, Authentication 과 Authorization 이라는 용어의 차이에 대해 짚고 넘어가자. 많은 경우 두 용어는 구체적인 구분 없이 혼용되곤 한다. 두 가지를 구분하는 핵심 질문은
 
 > 실제로 나에 대해서 **무엇**을 증명해 주는가?  
@@ -58,6 +60,7 @@ Server 가 login page (html, jsp 등)을 내려 주고, page 내의 html form을
 ## Digest
 
 MD5 hashing 을 이용한 암호화 인증 방식이다.
+
 1. Client가 server에게 request를 보냄
 2. Server는 nonce (number), realm (a hash string)을 client에 전달하고 인증을 요청
 3. Client는 2에서 받은 realm을 hash key로 username, password를 MD5 hashing하여 nonce와 함께 server로 전송

@@ -4,8 +4,11 @@ title: '[MHWIB] 인도하는 땅 몬스터 출현리스트'
 categories: [Game]
 tags: [game, ps4, monster hunter, mhwib]
 feature_image: https://game.capcom.com/manual/MHW/locale/ko/img/page/34_3_1.jpg?t=201909050000
+last_modified_at: '2022-04-09 23:50:01'
 ---
+
 <!-- more -->
+
 > Note  
 > 서비스 중단하였습니다. @ 1 Jan 2022.
 
@@ -13,7 +16,7 @@ feature_image: https://game.capcom.com/manual/MHW/locale/ko/img/page/34_3_1.jpg?
 
 인도하는 땅 각 지대 레벨별 출현 몬스터 원본글(루리웹) [https://bbs.ruliweb.com/family/4442/board/184513/read/196833](https://bbs.ruliweb.com/family/4442/board/184513/read/196833)
 
-작성자이신 루리웹 J.Eyck 님께서 
+작성자이신 루리웹 J.Eyck 님께서
 
 인도하는 땅 각 지대 레벨별 출현 몬스터 가로버전 원본글(인벤)
 [http://www.inven.co.kr/board/mhf/3749/7304](http://www.inven.co.kr/board/mhf/3749/7304)

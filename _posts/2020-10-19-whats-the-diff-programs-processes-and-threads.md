@@ -3,16 +3,20 @@ layout: post
 title: '[CS fundamentals] Programs, Processes, and Threads'
 categories: [CS]
 tags: [os, cs, interview, process, thread]
-feature_image: "https://cdn.pixabay.com/photo/2020/06/01/19/52/thread-5248183_1280.jpg"
+feature_image: 'https://cdn.pixabay.com/photo/2020/06/01/19/52/thread-5248183_1280.jpg'
+last_modified_at: '2022-04-09 23:50:01'
 ---
 
 <!-- more -->
-*이 포스트는 [What’s the Diff: Programs, Processes, and Threads](https://www.backblaze.com/blog/whats-the-diff-programs-processes-and-threads/)에서 발췌 번역<strike>이라기보단 재창조</strike>한 포스트입니다. 오역이나 빠트린 부분이 있을 수 있으니 상세한 내용은 원 포스트를 참조하시기 바랍니다.*
+
+_이 포스트는 [What’s the Diff: Programs, Processes, and Threads](https://www.backblaze.com/blog/whats-the-diff-programs-processes-and-threads/)에서 발췌 번역<strike>이라기보단 재창조</strike>한 포스트입니다. 오역이나 빠트린 부분이 있을 수 있으니 상세한 내용은 원 포스트를 참조하시기 바랍니다._
 
 # Programs
+
 Program 이란, 1과 0으로 이루어진 하나의 binary file 덩어리를 이야기한다. (큰 분류에서 그렇다는 이야기이다. 1/0 으로 이루어진 binary file 이라고 해서 무조건 program 이라 할 수는 없으며, 해당 architecture 나 OS 에서의 executable binary file 이 만족해야 하는 조건을 갖추어야 한다.) 일반적으로 disk storage, ROM 등의 non-volatile*비휘발성* 매체에 저장되며, C/C++, Lisp, Pascal 등의 다양한 high-level programming language 를 이용하여 제작된다. 제작된 source code 파일은 compiler, linker 등을 거쳐 최종적으로 computer 에서 실행 가능한 instruction 들로 이루어진 executable binary file 을 형태로 저장되는데, 이러한 compile 과정을 거치지 않고 source code 를 바로 'interprete' 하여 실행 가능한 Python, PHP, JavaScript, Ruby 등의 언어도 존재한다. 하지만 interpreting 언어이든, compile 언어이든 결국 최종적으로 CPU 에서 실행될 때에는 binary 형태로 memory 에 로드되는 과정을 거치게 된다.
 
 # How Processes Work
+
 'Program' 이 실행되기 위해서는 binary code 뿐만이 아니라 다른 여러 가지 자원이 필요하다. 하나의 'program' 이, 실행되기 위해서 필요로 하는 다른 resource 들과 함께 main memory 에 load 되어 실행될 때에 우리는 그것을 'Process' 라 부른다. 'Operating System'*운영체제*는 program 이 필요로 하는 추가적인 resource 들을 관리하고 할당해 주는 역할을 한다.
 
 Program 이 실행되기 위해 필요로 하는 resource 들에는, **register, program counter, stack** 등이 있다. **register** 는 CPU의 한 부분으로, data holding place 역할을 하며, instruction 이나, storage address 등 process 실행에 필요한 다양한 data 를 저장한다. 현재 program sequence 의 어느 부분을 실행 중인지를 저장하거나 (program counter or instruction pointer), process memory 의 **stack** 의 주소를 저장하거나, 혹은 **heap** 의 주소를 저장하는 register 들이 각각 존재한다.
@@ -25,7 +29,7 @@ Process 의 memory 구조에 대해서는 [이전 포스팅](/2020/10/16/process
 
 # How Threads Works
 
-'Thread' 는 process 내부에서의 '하나의 실행 단위' (unit of execution) 이라고 할 수 있다. 하나의 process 는 단일 thread 로 이루어질 수도 있고, 여러 개의 thread (multi-threaded) 로 이루어질 수도 있다. 
+'Thread' 는 process 내부에서의 '하나의 실행 단위' (unit of execution) 이라고 할 수 있다. 하나의 process 는 단일 thread 로 이루어질 수도 있고, 여러 개의 thread (multi-threaded) 로 이루어질 수도 있다.
 
 {% include figure.html image="/assets/img/20201019/diagram-thread-process-1.png" position="center" %}
 
@@ -55,6 +59,7 @@ Wrap-up:
 8. Thread 는 다른 thread 의 수행에 영향을 끼칠 수 있어 (공유 메모리의 접근) 주의가 필요하다.
 
 ## Processes vs. Threads - Advantages and Disadvantages
+
 ---
 
 | **PROCESS**                                     | **THREAD**                                                         |

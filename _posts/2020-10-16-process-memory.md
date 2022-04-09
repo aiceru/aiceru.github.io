@@ -5,9 +5,11 @@ categories: [CS]
 tags: [cs, process, memory, linux]
 use_math: true
 feature_image: https://academy.avast.com/hubfs/New_Avast_Academy/What%20is%20RAM%20memory/What_is_RAM-Hero.jpg
+last_modified_at: '2022-04-09 23:50:01'
 ---
 
 <!-- more -->
+
 _이 포스트는 [In-Memory Layout of a Program (Process)](https://gabrieletolomei.wordpress.com/miscellanea/operating-systems/in-memory-layout/) 를 공부하며 번역한 포스트입니다._
 
 이번 포스트에서는, program 이 실행될 때 실제로 main memory 에 어떤 구조를 가지고 실행되는지 설명한다. 여기에서는 **32-bit x86** 아키텍쳐 머신에서 실행되는 **multitasking Linux OS** 환경을 가정한다.
@@ -22,9 +24,9 @@ OS kernel 또한 그 자체로 하나의 process 이므로, virtual address spac
 아래 그림은 User mode process 의 virtual memory space 부분에 대한 상세 내용을 나타낸다.
 {% include figure.html image="/assets/img/20201016/program_in_memory2.png" position="center" caption="User mode process memory space" %}
 
-- __Text__: program 의 code (instructions) 가 저장되는 공간. Overflow 로 인해 덮어써지는 현상을 방지하기 위하여 `heap` 이나 `stack` 영역 보다 앞쪽 (lower address) 에 자리한다.
-- __Data__: initialized data segment, 명시적으로 초기화된 __global(전역)__ 변수와 __static__ 변수들을 저장하는 공간이다. 기본적으로 data segment 는 read-only 속성을 가지지만, 실제로는 read-only 영역과 read-write 영역으로 구분된다. 예를 들어, 변수의 선언 구문에 따른 저장 영역은 아래와 같다.
- 
+- **Text**: program 의 code (instructions) 가 저장되는 공간. Overflow 로 인해 덮어써지는 현상을 방지하기 위하여 `heap` 이나 `stack` 영역 보다 앞쪽 (lower address) 에 자리한다.
+- **Data**: initialized data segment, 명시적으로 초기화된 **global(전역)** 변수와 **static** 변수들을 저장하는 공간이다. 기본적으로 data segment 는 read-only 속성을 가지지만, 실제로는 read-only 영역과 read-write 영역으로 구분된다. 예를 들어, 변수의 선언 구문에 따른 저장 영역은 아래와 같다.
+
 ```c
 char s[] = "hello world";
 int debug = 1;
@@ -37,7 +39,6 @@ const char* str = "hello world";
 // 'hello world' string literal 은 read-only 영역에 저장.
 ```
 
-- __BSS__: uninitialized data segment. 명시적으로 초기화되지 않은 모든 변수는 OS kernel 에 의해 arithmetic 0 값으로 초기화되어 이 영역에 저장된다. BSS 영역은 (당연히) read-write 속성을 가짐.
-- __Stack__: program stack 을 저장하는 영역. `0xBFFFFFFF` (OS kernel 영역의 바로 아래) 에서부터 아래쪽 (lower address) 으로 증가하며, 프로그램의 흐름에서 function call 에 필요한 모든 data 가 이곳에 저장된다. function call 시 stack 에 저장되는 정보를 __stack frame__ 이라 하며, 호출하는 함수의 입력으로 주어질 parameter set, 함수 내부에서 선언된 local variables, 함수 종료 후 되돌아올 return address 로 구성된다. __stack pointer__ register 에는 현재 stack 의 top point 가 저장되는데, 함수의 호출에 따라 stack 의 용량이 증가하다가 이 pointer 가 __heap pointer__ 를 만나거나 혹은 `RLIMIT_STACK` 값에 도달하게 되면 우리가 잘 알고 있는 __stack overflow__ 가 발생한다.
-- __Heap__: Dynamically allocated memory 를 위한 공간. runtime 에 할당이 필요한 모든 메모리는 이 영역에 저장된다. (C 에서의 `malloc` 등) BSS 영역의 바로 위에서 시작하여 위쪽 (higher address) 으로 증가하며, process 에서 사용되는 모든 shared library 등 동적으로 로드된 module 들과 공유된다.
-
+- **BSS**: uninitialized data segment. 명시적으로 초기화되지 않은 모든 변수는 OS kernel 에 의해 arithmetic 0 값으로 초기화되어 이 영역에 저장된다. BSS 영역은 (당연히) read-write 속성을 가짐.
+- **Stack**: program stack 을 저장하는 영역. `0xBFFFFFFF` (OS kernel 영역의 바로 아래) 에서부터 아래쪽 (lower address) 으로 증가하며, 프로그램의 흐름에서 function call 에 필요한 모든 data 가 이곳에 저장된다. function call 시 stack 에 저장되는 정보를 **stack frame** 이라 하며, 호출하는 함수의 입력으로 주어질 parameter set, 함수 내부에서 선언된 local variables, 함수 종료 후 되돌아올 return address 로 구성된다. **stack pointer** register 에는 현재 stack 의 top point 가 저장되는데, 함수의 호출에 따라 stack 의 용량이 증가하다가 이 pointer 가 **heap pointer** 를 만나거나 혹은 `RLIMIT_STACK` 값에 도달하게 되면 우리가 잘 알고 있는 **stack overflow** 가 발생한다.
+- **Heap**: Dynamically allocated memory 를 위한 공간. runtime 에 할당이 필요한 모든 메모리는 이 영역에 저장된다. (C 에서의 `malloc` 등) BSS 영역의 바로 위에서 시작하여 위쪽 (higher address) 으로 증가하며, process 에서 사용되는 모든 shared library 등 동적으로 로드된 module 들과 공유된다.

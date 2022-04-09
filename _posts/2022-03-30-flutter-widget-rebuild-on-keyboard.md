@@ -5,6 +5,7 @@ categories: [Development]
 tags: [app, flutter, widget, rebuild, keyboard, textfield, textformfield]
 feature_image: 'https://images.unsplash.com/photo-1604246914453-b0d2afe6dcc0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80'
 feature_license: Cover picture by <a href="https://unsplash.com/@chrisbriscoe?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Christopher Briscoe</a> on <a href="https://unsplash.com/s/photos/rebuild?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+last_modified_at: '2022-04-09 23:50:01'
 ---
 
 <!-- more -->

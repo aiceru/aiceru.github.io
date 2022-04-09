@@ -3,10 +3,12 @@ layout: post
 title: '[API backend] server 기획부터 배포까지 (1) - 준비'
 categories: [Development, API backend server]
 tags: [backend, api server, golang]
-feature_image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format"
+feature_image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format'
+last_modified_at: '2022-04-09 23:50:01'
 ---
 
 <!-- more -->
+
 # 시리즈 기획 배경
 
 5년만에 이런저런 이유로 (반)자발적 백수가 되었다. 원하는 일을 할 수 있을 것 같아 보이는 회사들에 틈틈이 지원서를 넣고 인터뷰를 진행하고 있기는 하지만, 확실히 시간이 여유로운 편이라, 이왕 이렇게 된 거 간접 경험이나마 조금이라도 늘려 둘 겸 토이프로젝트를 진행하면서 그 처음부터의 과정들을 하나의 시리즈로 남겨 보고 싶어졌다. 비록 삽질일지언정, 여유가 생겼다고 늘어지기 시작하면 관성이 되어 아무 것도 안하고 시간만 흘려보내게 될 테니까.
@@ -28,7 +30,7 @@ feature_image: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=
 
 # 새출발
 
-우선 기존의 github repository 에서 develop branch 를 'v1' branch 로 ref 만 따 두고,  repository 처음 생성한 커밋으로 reset 하였다. 'v1' branch 는 '이렇게 하면 망해요' 의 반면교사로 남겨 둘 셈이다.
+우선 기존의 github repository 에서 develop branch 를 'v1' branch 로 ref 만 따 두고, repository 처음 생성한 커밋으로 reset 하였다. 'v1' branch 는 '이렇게 하면 망해요' 의 반면교사로 남겨 둘 셈이다.
 
 어떤 접근법을 쓰던, 어떤 프로세스로 개발을 하던 일단 선택의 기준이나 정당성은 중요치 않다. 하지만 이 프로젝트를 진행하면서 반드시 지켜야 할 대전제를 정했다.
 
@@ -59,4 +61,5 @@ Programming 언어, Service infra (public cloud 등), Authorization, Database �
 프로젝트는 이제 시작하는 단계로, 내가 어디까지 얼마나 이걸 기록하며 해나갈 수 있을지는 모르겠지만. 최선을 다해 보자는 의미에서 굳이 공개된 블로그에 싸지른다. ~~안했을때 쪽팔리기 위해서~~ 프로젝트 자체도 진행하면서 프로젝트 일기 형식으로 남기게 될 예정이라 포스팅의 텀이 생각보다 길어지게 되겠지만, 일단 끝까지 가는 것에 의미를 두고자 한다.
 
 # Special thanks to...
+
 - [백엔드가 이정도는 해줘야 함](https://velog.io/@city7310/%EB%B0%B1%EC%97%94%EB%93%9C%EA%B0%80-%EC%9D%B4%EC%A0%95%EB%8F%84%EB%8A%94-%ED%95%B4%EC%A4%98%EC%95%BC-%ED%95%A8-1.-%EC%BB%A8%ED%85%90%EC%B8%A0%EC%9D%98-%EB%8F%99%EA%B8%B0%EC%99%80-%EA%B0%9C%EC%9A%94) 이 시리즈에서 굉장히 많이 motivation 을 얻었고, 의사 결정 사항에 대한 근거도 많이 얻을 수 있었다. 그냥 프로젝트만 진행하려고 하다가 시리즈 1편의 내용에 너무나 공감이 되어,<sub>비교의 대상이 되면 부끄럽겠지만</sub> 비슷한 맥락에서 내 프로젝트 진행 경험도 블로그에 남겨 보기로 결심했다.
