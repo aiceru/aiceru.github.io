@@ -1,7 +1,7 @@
 ---
 layout: post
 title: '[API backend] server 기획부터 배포까지 (1-1) - HTTP API 정의'
-category: [Development, API backend server]
+categories: [Development]
 tags: [backend, api server, golang, go, server, http api, rest, software design]
 feature_image: 'https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'
 last_modified_at: '2022-04-09 23:50:01'
