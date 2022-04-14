@@ -4,6 +4,7 @@ title: '[CentOS] console 의 해상도와 폰트 변경하기'
 categories: [Development]
 tags: [centos, linux, console, resolution, font]
 last_modified_at: '2022-04-09 23:50:01'
+redirect_from: /2017/01/16/centos-console-resolution/
 ---
 
 <!-- more -->

@@ -5,6 +5,7 @@ categories: [Development]
 tags: [linux, network, multicast]
 feature_image: https://picsum.photos/1300/400
 last_modified_at: '2022-04-09 23:50:01'
+redirect_from: /2019/09/17/receive-multicast/
 ---
 
 <!-- more -->
