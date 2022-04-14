@@ -6,6 +6,7 @@ tags: [interview, data structure, cs, red-black, tree]
 feature_image: https://cdn.pixabay.com/photo/2020/09/06/16/24/elderberry-5549389_1280.jpg
 published: true
 last_modified_at: '2022-04-09 23:50:01'
+redirect_from: /2020/10/13/red-black-tree/
 ---
 
 <!-- more -->

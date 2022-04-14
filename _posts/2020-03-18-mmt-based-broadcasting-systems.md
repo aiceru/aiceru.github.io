@@ -5,6 +5,7 @@ categories: [Development]
 tags: [research, mmt, broadcasting]
 feature_image: https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/MPEG_Transport_Stream_HL.svg/800px-MPEG_Transport_Stream_HL.svg.png
 last_modified_at: '2022-04-09 23:50:01'
+redirect:from: /2020/03/18/mmt-based-broadcasting-systems/
 ---
 
 <!-- more -->

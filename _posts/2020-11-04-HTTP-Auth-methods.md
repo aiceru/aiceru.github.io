@@ -5,6 +5,7 @@ categories: [Development]
 tags: [backend, api server, http, auth, authorization, authentication]
 feature_image: 'https://images.unsplash.com/photo-1580795478690-5c6afcf4e7c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80'
 last_modified_at: '2022-04-09 23:50:01'
+redirect_from: /2020/11/04/HTTP-Auth-methods/
 ---
 
 <!-- more -->

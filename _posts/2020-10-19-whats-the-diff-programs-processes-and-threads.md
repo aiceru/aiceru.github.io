@@ -5,6 +5,7 @@ categories: [CS]
 tags: [os, cs, interview, process, thread]
 feature_image: 'https://cdn.pixabay.com/photo/2020/06/01/19/52/thread-5248183_1280.jpg'
 last_modified_at: '2022-04-09 23:50:01'
+redirect_from: /2020/10/19/whats-the-diff-programs-processes-and-threads/
 ---
 
 <!-- more -->

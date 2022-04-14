@@ -5,6 +5,7 @@ categories: [Development]
 tags: [go, vim, environment, setup]
 feature_image: https://blog.golang.org/gopher/header.jpg
 last_modified_at: '2022-04-09 23:50:01'
+redirect_from: /2016/05/09/go-with-vim/
 ---
 
 <!-- more -->

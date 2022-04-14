@@ -5,6 +5,7 @@ categories: [Development]
 tags: [backend, api server, golang]
 feature_image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format'
 last_modified_at: '2022-04-09 23:50:01'
+redirect_from: /api%20backend%20server%20-%20planning%20to%20deployment/2020/11/02/API-backend-server-1/
 ---
 
 <!-- more -->

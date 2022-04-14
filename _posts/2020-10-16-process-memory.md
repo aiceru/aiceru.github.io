@@ -6,6 +6,7 @@ tags: [cs, process, memory, linux]
 use_math: true
 feature_image: https://academy.avast.com/hubfs/New_Avast_Academy/What%20is%20RAM%20memory/What_is_RAM-Hero.jpg
 last_modified_at: '2022-04-09 23:50:01'
+redirect_from: /2020/10/16/process-memory/
 ---
 
 <!-- more -->

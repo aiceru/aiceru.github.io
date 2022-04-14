@@ -5,6 +5,7 @@ categories: [Game]
 tags: [game, ps4, monster hunter, mhwib]
 feature_image: https://game.capcom.com/manual/MHW/locale/ko/img/page/34_3_1.jpg?t=201909050000
 last_modified_at: '2022-04-09 23:50:01'
+redirect_from: /2019/09/25/mhwib-gland-checklist/
 ---
 
 <!-- more -->
