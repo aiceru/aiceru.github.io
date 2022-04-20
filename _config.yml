@@ -32,7 +32,6 @@ plugins:
   - jekyll-include-cache
   - jekyll-feed
   - jemoji
-  - jekyll-redirect-from
 
 # 3. Gem settings
 paginate: 10 # jekyll-paginate > items per page
@@ -62,7 +61,7 @@ timezone: Asia/Seoul # Timezone for blog posts and alike
 # 5. Collections
 collections:
   posts:
-    title: All Posts # Needed for Siteleaf
+    title: # Needed for Siteleaf
     output: true
     # description: "The moon always lights" # The post list page contens
     feature_image: '/assets/logos/blossom.jpg'
