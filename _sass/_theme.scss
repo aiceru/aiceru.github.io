@@ -68,6 +68,15 @@ body {
   @include justify-content(center);
 }
 
+.code-caption {
+  margin-top: -2.4rem;
+  text-align: center;
+  font-size: small;
+  color: $captionColour;
+  @include flex-direction(column);
+  @include justify-content(center);
+}
+
 .logo {
   display: inline-block;
   line-height: 0;
