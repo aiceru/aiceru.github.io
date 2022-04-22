@@ -1,6 +1,6 @@
 ---
 layout: post
-title: '[gRPC] Simple gRPC server with Golang'
+title: '[gRPC] Simple gRPC calls with Golang and Flutter'
 categories: [Development]
 series: 'Implementing gRPC server with Protobuf, Golang, Flutter'
 tags: [grpc, flutter, golang, protobuf]
@@ -39,7 +39,6 @@ example
 ├── protocols
 └── server
 ```
-
 
 ## API server
 RPC API 의 로직을 실행하는 부분. 데이터를 저장하고, 찾아오고, 수정하는 등 API 호출에 따른 business logic 이 들어갈 부분이다.
@@ -129,4 +128,35 @@ func main() {
 ```
 {% include code-caption.html text="main.go" %}
 
-이것으로 서버의 준비는 완료. 다음 편에서는 Flutter client 의 구현을 설명한다.
+# gRPC Client
+Flutter 에서 grpc client 를 만들고, rpc call 을 통해 데이터를 받아 출력해보자.
+
+## Import protocols
+Protocol Buffer compiler 가 생성한 파일을 임포트한다. `pubspec.yaml` 의 dependencies 섹션에 아래 내용을 추가.
+
+```yaml
+  grpc: ^3.0.2
+  dartapi:
+    path: ../protocols/dartapi
+```
+{% include code-caption.html text="pubspec.yaml" %}
+
+## gRPC Client
+```dart
+Future<List<User>> getUser() async {
+  final channel = ClientChannel('localhost',
+    port: 8080,
+    options: ChannelOptions(
+      credentials: const ChannelCredentials.insecure(),
+    )
+  );
+
+  UserApiClient userApiClient = UserApiClient(channel);
+  final resp = await userApiClient.getUser(
+    GetUserRequest()..email="user@email.com"
+  );
+  return resp.users;
+}
+```
+
+서버 쪽에 비하면 상당히 단순한다. 로컬 테스트 단계에서 암호화를 사용하지 않을 것이므로, `ChannelCredentials.insecure()` 옵션을 지정하고 `grpc.ClientChannel` 을 생성한다. 이 채널을 이용하는 `UserApiClient` 를 생성하고, 클라이언트 객체의 member function 을 호출하면 rpc 가 호출된다.
