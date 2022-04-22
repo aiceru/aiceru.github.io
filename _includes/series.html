@@ -1,0 +1,33 @@
+{% if page.series %}
+  {% assign count = '0' %}
+  {% assign idx = '0' %}
+  {% for post in site.posts reversed %}
+    {% if post.series == page.series %}
+      {% capture count %}{{ count | plus: '1' }}{% endcapture %}
+      {% if post.url == page.url %}
+        {% capture idx %}{{count}}{% endcapture %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+<details>
+  <summary>
+    Post Series <sub>(click to expand)</sub>
+    <h3>{{ page.series }}</h3>
+  </summary>
+  <div class="panel seriesNote">
+    {% assign count = '0' %}
+    {% for post in site.posts reversed %}
+    {% if post.series == page.series %}
+      {% capture count %}{{ count | plus: '1' }}{% endcapture %}
+      👉 Part {{ count }} -
+      {% if page.url == post.url %}
+        {{ page.title }}
+      {% else %}
+        <a href="{{post.url}}">{{post.title}}</a>
+      {% endif %}<br/>
+    {% endif %}
+    {% endfor %}
+  </div>
+</details>
+<hr/>

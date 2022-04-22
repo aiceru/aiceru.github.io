@@ -1,7 +1,8 @@
 ---
 layout: post
-title: '[ProtoBuf] Making gRPC API with Protocol buffers'
+title: '[gRPC] Making gRPC API with Protocol buffers'
 categories: [Development]
+series: 'Implementing gRPC server with Protobuf, Golang, Flutter'
 tags: [protobuf, backend, api, server, client, grpc]
 feature_image: '/assets/img/20220420/20220420.png'
 feature_license: ''
@@ -11,6 +12,8 @@ last_modified_at: '2022-04-22 11:53:00'
 ---
 
 <!-- more -->
+{% include series.html %}
+
 # Protocol Buffers 이용하여 gRPC API 만들기
 [Protocol Buffers](https://developers.google.com/protocol-buffers) 를 사용하여 간단한 [gRPC](https://grpc.io/about/) 명세를 작성하고, protobuf compiler 를 통해 생성된 코드를 dart(flutter), golang 에서 이용하는 방법을 설명한다.
 
