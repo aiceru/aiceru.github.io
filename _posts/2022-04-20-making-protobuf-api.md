@@ -133,7 +133,7 @@ protoc \
 
 golang 관련 옵션이 좀 많다. golang binding code 의 output 위치를 현재 디렉토리 `SRC_DIR` 로 지정해 주고, option 으로 module prefix ([설명 참고](https://developers.google.com/protocol-buffers/docs/reference/go-generated#invocation))를 설정해준다. 이렇게 설정하면 아래와 같은 구조로 output 이 생성된다.
 ```
-├── dart
+├── dartapi
 │   └── lib
 │       ├── api_user.pb.dart
 │       ├── api_user.pbenum.dart
@@ -170,7 +170,7 @@ require (
 ```
 {% include code-caption.html text="go.mod" %}
 
-마찬가지로, flutter(dart) 에서 pubspec 으로 임포트가 가능하도록 pubspec.yaml 파일을 추가해준다.
+마찬가지로, flutter(dart) 에서 pubspec 으로 임포트가 가능하도록 /dartapi 디렉토리에 pubspec.yaml 파일을 추가해준다.
 ```
 name: dartapi
 
