@@ -7,7 +7,7 @@ feature_image: '/assets/img/20220420/20220420.png'
 feature_license: ''
 use_math: false
 published: true
-last_modified_at: '2022-04-20 15:00:00'
+last_modified_at: '2022-04-22 11:53:00'
 ---
 
 <!-- more -->
@@ -112,7 +112,7 @@ message AddUserReply {
 #!/bin/bash
 
 SRC_DIR=$(pwd)
-DART_OUT=$SRC_DIR/dart/lib
+DART_OUT=$SRC_DIR/dartapi/lib
 GO_DIR=$SRC_DIR/goapi
 
 rm -rf "$GO_DIR"
@@ -169,5 +169,19 @@ require (
 )
 ```
 {% include code-caption.html text="go.mod" %}
+
+마찬가지로, flutter(dart) 에서 pubspec 으로 임포트가 가능하도록 pubspec.yaml 파일을 추가해준다.
+```
+name: dartapi
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+environment:
+  sdk: ">=2.15.0 <3.0.0"
+
+dependencies:
+  protobuf: ^2.0.1
+```
+{% include code-caption.html text="pubspec.yaml" %}
 
 이제 서버와 클라이언트를 각각의 언어로 구현할 **준비**가 끝났다. 다음 편에서는 이렇게 생성한 binding code 를 어떻게 임포트하고 사용하는지 알아보자.
