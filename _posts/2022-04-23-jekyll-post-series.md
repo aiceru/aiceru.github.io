@@ -59,13 +59,15 @@ last_modified_at: '2022-04-23 23:50:01'
 확장되는 패널(`<div class="panel seriesNote">` 태그) 에 같은 시리즈에 속한 포스트들의 목록을 표시하도록 했다. 조금만 코드를 뜯어본다면 원하는 대로 수정해서 사용할 수 있을 것이다.
 
 ## Add 'series' tag to Post
-포스트의 front matter 에 series 태그를 추가해 준다.
+포스트의 front matter 에 series 태그를 추가하고, series tag 가 있는 포스트의 본문에는 `series.html` 을 include 해준다.
 ```markdown
 ---
 ...
 series: "My series 1"
 ...
 ---
+
+{% include series.html %}
 ```
 
 ## Add css for Panel class
