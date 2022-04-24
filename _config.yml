@@ -84,8 +84,8 @@ baseurl: ''
 repo: 'https://github.com/aiceru/aiceru.github.io'
 email: 'aiceru@gmail.com'
 disqus: 'moon-light-2' # Blog post comments, uncomment the option and set the site ID from your Disqus account
-# google_analytics: 'UA-73645699-2'
-# google_analytics_anonymize_ip: ''
+google_analytics: 'G-MH3J58HP07'
+google_analytics_anonymize_ip: 'false'
 # service_worker: false # Will turn off the service worker if set to false
 css_inline: true # Will insert all styles into a single <style> block in the <head> element and remove the style <link> reference
 
