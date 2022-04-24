@@ -67,7 +67,9 @@ series: "My series 1"
 ...
 ---
 
+{% raw %}
 {% include series.html %}
+{% endraw %}
 ```
 
 ## Add css for Panel class
