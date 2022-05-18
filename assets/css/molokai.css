@@ -206,3 +206,12 @@
   color: #f8f8f2;
   background-color: #1b1d1e;
 }
+code.language-plaintext {
+  color: #f8f8f2;
+  padding: 0 0.4rem;
+  background-color: #262a2b;
+  border-color: #3d5b6b;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+}
